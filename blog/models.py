@@ -33,6 +33,16 @@ class Post(models.Model):
     # date and time whenever the record is saved, not just when it is created.
     updated_on = models.DateTimeField(auto_now=True)
 
+    # Meta data (always below attributes)
+    class Meta:
+        # "-": descending order of creation date
+        ordering = ["-created_on"]
+
+    # Methods (always below meta data)
+    # Change post identifier
+    def __str__(self):
+        return f"{self.title} | Written by {self.author}"
+
 
 class Comment(models.Model):
     post = models.ForeignKey(
@@ -48,4 +58,10 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
 
     created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return f"Comment {self.body} by {self.author}"
     
