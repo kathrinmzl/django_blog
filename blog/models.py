@@ -26,3 +26,9 @@ class Post(models.Model):
     # status
     # uses a constant STATUS
     status = models.IntegerField(choices=STATUS, default=0)
+    # excerpt
+    excerpt = models.TextField(blank=True)
+    # updated_on
+    # auto_now argument for the updated_on field sets the value to the current 
+    # date and time whenever the record is saved, not just when it is created.
+    updated_on = models.DateTimeField(auto_now=True)
