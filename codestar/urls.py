@@ -19,7 +19,9 @@ from django.urls import path, include
 #from blog.views import my_blog -> not neccessary when blog has its own url file
 
 urlpatterns = [
+    # order url paths alphabetically
+    path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
     #path('blog/', my_blog, name = 'blog'), -> not neccessary when blog has its own url file
     path("", include("blog.urls"), name="blog-urls"), # -> look for urlpatterns in blog url file
-    path('admin/', admin.site.urls),
 ]
