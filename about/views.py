@@ -2,24 +2,14 @@ from django.shortcuts import render
 from .models import About
 
 
-def about_info(request):
+def about_me(request):
     """
-    Display the latest :model:`about.About`.
-
-    **Context**
-
-    ``about``
-        An instance of :model:`about.About`.
-
-    **Template:**
-
-    :template:`about/about_info.html`
+    Renders the About page
     """
+    about = About.objects.all().order_by('-updated_on').first()
 
-    about = About.objects.order_by('-updated_on').first()  # latest first
-
-    return render( # returns an HttpResponse
+    return render(
         request,
-        "about/about_info.html",
-        {"about": about}, 
+        "about/about.html",
+        {"about": about},
     )
