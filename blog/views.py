@@ -26,10 +26,12 @@ def post_detail(request, slug):
     """
 
     queryset = Post.objects.filter(status=1)
+    # get one post returned with that unique slug or an error message if slug doesnt exist
     post = get_object_or_404(queryset, slug=slug)
 
-    return render(
+    return render( # returns an HttpResponse
         request,
         "blog/post_detail.html",
-        {"post": post},
+        {"post": post}, # dict with the data -> available for use in the 
+        # template as the DTL variable {{ post }}
     )
