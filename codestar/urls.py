@@ -21,8 +21,9 @@ from django.urls import path, include
 urlpatterns = [
     # order url paths alphabetically
     path('about/', include("about.urls"), name="about-urls"), 
+    path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    #path('blog/', my_blog, name = 'blog'), -> not neccessary when blog has its own url file
-    path("", include("blog.urls"), name="blog-urls"), # -> look for urlpatterns in blog url file
+    # path('blog/', my_blog, name = 'blog'), -> not neccessary when blog has its own url file
+    path("", include("blog.urls"), name="blog-urls"),  # -> look for urlpatterns in blog url file
 ]
