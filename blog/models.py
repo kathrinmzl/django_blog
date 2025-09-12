@@ -46,6 +46,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(
+        # related_name can be used to access comments for a specific post inside a view
         Post, on_delete=models.CASCADE, related_name="comments"
     )
 
