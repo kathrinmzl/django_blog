@@ -29,9 +29,16 @@ def post_detail(request, slug):
     # get one post returned with that unique slug or an error message if slug doesnt exist
     post = get_object_or_404(queryset, slug=slug)
 
+    comments = post.comments.all().order_by("-created_on")
+    comment_count = post.comments.filter(approved=True).count()
+
     return render( # returns an HttpResponse
         request,
         "blog/post_detail.html",
-        {"post": post}, # dict with the data -> available for use in the 
-        # template as the DTL variable {{ post }}
+        {
+            "post": post,
+            "comments": comments,
+            "comment_count": comment_count,
+        }, # dict with the data -> available for use in the
+        # template as the DTL variable e.g. {{ post }}
     )
