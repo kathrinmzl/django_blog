@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # forms
+    'crispy_forms',
+    'crispy_bootstrap5',
     # text editor
     'django_summernote',
     # own apps
@@ -61,6 +64,11 @@ SITE_ID = 1
 # the site will automatically redirect us to the home page.
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# for crispy forms
+# set bootstrap5 as default
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
