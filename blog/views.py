@@ -32,6 +32,16 @@ def post_detail(request, slug):
 
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
+
+    # form functionality
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+
     comment_form = CommentForm()
 
     return render( # returns an HttpResponse
