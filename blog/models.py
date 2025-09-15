@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
+
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -18,6 +20,8 @@ class Post(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="blog_posts"
     )
+    # store image for each post
+    featured_image = CloudinaryField('image', default='placeholder')
     # content blog article
     content = models.TextField()
     # create time
