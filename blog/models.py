@@ -8,6 +8,9 @@ STATUS = ((0, "Draft"), (1, "Published"))
 # Create your models here.
 # class named Post inheriting from the Model class
 class Post(models.Model):
+    """
+    Stores a single blog post entry related to :model:`auth.User`
+    """
     # Attributes: 
     # title
     title = models.CharField(max_length=200, unique=True)
@@ -49,6 +52,10 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Stores a single comment entry related to :model:`auth.User`
+    and :model:`blog.Post`.
+    """
     post = models.ForeignKey(
         # related_name can be used to access comments for a specific post inside a view
         Post, on_delete=models.CASCADE, related_name="comments"

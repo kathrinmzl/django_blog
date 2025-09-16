@@ -9,6 +9,10 @@ from django_summernote.admin import SummernoteModelAdmin
 # give admin panel greater functionality and clarity
 @admin.register(Post) # register the Post model
 class PostAdmin(SummernoteModelAdmin):
+    """
+    Lists fields for display in admin, fileds for search,
+    field filters, fields to prepopulate and rich-text editor.
+    """
     # Post dashboard functionality
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']
@@ -19,5 +23,6 @@ class PostAdmin(SummernoteModelAdmin):
 
 # Register your models here.
 # Show Post model on admin site
-#admin.site.register(Post) -> not neccessary anymore because of decorator
+# admin.site.register(Post) -> not neccessary anymore because of decorator
 admin.site.register(Comment)
+
